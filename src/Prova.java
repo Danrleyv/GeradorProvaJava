@@ -63,26 +63,11 @@ public class Prova {
         prova+=obtemDetalhes();
         prova+="\n\n";
         for(int i=0;i<this.qtdDiscursivas;i++){
-            prova+="\nQuestao "+(i+1)+": "+questoesDiscursivas[i].getPergunta()+"\n"+questoesDiscursivas[i].getCriterioCorrecao()+"(Peso "+questoesDiscursivas[i].getPeso()+")\n\n\n\n\n";
+            prova+="\nQuestao "+(i+1)+": "+questoesDiscursivas[i].retornaQuestao();
         }
         for(int i=0;i<this.qtdObjetivas;i++){
-            prova+="\nQuestao "+(i+qtdDiscursivas)+": "+questoesObjetivas[i].getPergunta()+"(Peso "+questoesObjetivas[i].getPeso()+")\n";
-            for(int j=0;j<5;j++){
-                switch(j){
-                    case 0: prova+="a)";
-                        break;
-                    case 1: prova+="b)";
-                        break;
-                    case 2: prova+="c)";
-                        break;
-                    case 3: prova+="d)";
-                        break;
-                    case 4: prova+="e)";
-                        break;
-                }
-                prova+=questoesObjetivas[i].getOpcoes()[j]+"\n\n";
+            prova+="\nQuestao "+(i+qtdDiscursivas)+": "+questoesObjetivas[i].retornaQuestao();
             }
-        }
         return prova;
     }
 }

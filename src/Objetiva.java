@@ -33,4 +33,25 @@ public class Objetiva extends Questao{
     public void setOpcoes(String[] opcoes) {
         this.opcoes = opcoes;
     }
+    
+    public String retornaQuestao(){
+        String questao="";
+        questao+=this.getPergunta()+"(Peso "+this.getPeso()+")\n";
+        for(int j=0;j<5;j++){
+            switch(j){
+                case 0: questao+="a)";
+                        break;
+                case 1: questao+="b)";
+                        break;
+                case 2: questao+="c)";
+                        break;
+                case 3: questao+="d)";
+                        break;
+                case 4: questao+="e)";
+                        break;
+            }
+            questao+=this.getOpcoes()[j]+"\n\n";
+        }
+        return questao;
+    }
 }
