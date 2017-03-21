@@ -17,8 +17,8 @@ public class Prova {
     
     int qtdDiscursivas,qtdObjetivas;
     
-    Discursiva questoesDiscursivas[]=new Discursiva[10];
-    Objetiva questoesObjetivas[]=new Objetiva[10];
+    Discursiva[] questoesDiscursivas;
+    Objetiva[] questoesObjetivas;
     
     public String getNomeDisciplina() {
         return nomeDisciplina;
@@ -80,7 +80,7 @@ public class Prova {
                     case 4: prova+="e)";
                         break;
                 }
-                prova+=questoesObjetivas[i].getOpcoes()[j]+"\n";
+                prova+=questoesObjetivas[i].getOpcoes()[j]+"\n\n";
             }
         }
         return prova;

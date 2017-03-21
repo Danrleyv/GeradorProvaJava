@@ -28,8 +28,11 @@ public class Principal {
         System.out.print("\nQuantas questoes discursivas? ");
         m1.qtdDiscursivas=s.nextInt();
         lixo=s.nextLine();
+        
+        m1.questoesDiscursivas = new Discursiva[m1.qtdDiscursivas];
         if(m1.qtdDiscursivas>0){
             for(int i=0;i<m1.qtdDiscursivas;i++){
+                m1.questoesDiscursivas[i]= new Discursiva();
                 System.out.print("\nInforme o enunciado da questao "+(i+1)+": ");
                 m1.questoesDiscursivas[i].setPergunta(s.nextLine());
                 System.out.print("\nInforme os criterios de avaliacao da questao "+(i+1)+": ");
@@ -43,10 +46,13 @@ public class Principal {
         System.out.print("\nQuantas questoes objetivas? ");
         m1.qtdObjetivas=s.nextInt();
         lixo=s.nextLine();
+        
+        m1.questoesObjetivas = new Objetiva[m1.qtdObjetivas];
         if(m1.qtdObjetivas>0){
             char x='a';
-            String c[]=new String[10];
+            String c[]=new String[5];
             for(int i=0;i<m1.qtdObjetivas;i++){
+                m1.questoesObjetivas[i] = new Objetiva();
                 System.out.print("\nInforme o enunciado da questao "+(i+1)+": ");
                 m1.questoesObjetivas[i].setPergunta(s.nextLine());
                 for(int j=0;j<5;j++){
@@ -62,7 +68,6 @@ public class Principal {
                         case 4: x='e';
                             break;
                     }
-                    lixo=s.nextLine();
                     System.out.print("\nInforme a alternativa "+x+": ");
                     c[j]=s.nextLine();
                 }
@@ -71,7 +76,7 @@ public class Principal {
                 m1.questoesObjetivas[i].setResposta(s.nextInt());
                 lixo=s.nextLine();
                 System.out.print("\nInforme o peso da questao "+(i+1)+": ");
-                m1.questoesDiscursivas[i].setPeso(s.nextDouble());
+                m1.questoesObjetivas[i].setPeso(s.nextDouble());
                 lixo=s.nextLine();
             }
         }
