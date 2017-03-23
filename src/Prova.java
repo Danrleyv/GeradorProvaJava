@@ -1,3 +1,6 @@
+
+import java.util.ArrayList;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,10 +18,7 @@ public class Prova {
     private String local;
     private String data;
     
-    int qtdDiscursivas,qtdObjetivas;
-    
-    Discursiva[] questoesDiscursivas;
-    Objetiva[] questoesObjetivas;
+    public ArrayList<Questao> questoes = new ArrayList<Questao>();
     
     public String getNomeDisciplina() {
         return nomeDisciplina;
@@ -62,12 +62,9 @@ public class Prova {
         String prova="";
         prova+=obtemDetalhes();
         prova+="\n\n";
-        for(int i=0;i<this.qtdDiscursivas;i++){
-            prova+="\nQuestao "+(i+1)+": "+questoesDiscursivas[i].retornaQuestao();
+        for(int i=0;i<questoes.size();i++){
+            prova+="\nQuestao "+(i+questoes.size())+": "+questoes.get(i).retornaQuestao();
         }
-        for(int i=0;i<this.qtdObjetivas;i++){
-            prova+="\nQuestao "+(i+qtdDiscursivas)+": "+questoesObjetivas[i].retornaQuestao();
-            }
         return prova;
     }
 }

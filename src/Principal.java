@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import java.util.ArrayList;
 import java.util.Scanner;
 /**
  *
@@ -12,7 +13,7 @@ import java.util.Scanner;
 public class Principal {
     public static void main(String[] args){
         Scanner s = new Scanner(System.in);
-        String lixo="";
+        String lixo="", op="";
         Prova m1 = new Prova();
         
         System.out.print("Informe a disciplina: ");
@@ -25,13 +26,15 @@ public class Principal {
         System.out.print("\nInforme a data da prova: ");
         m1.setData(s.nextLine());
         
-        System.out.print("\nQuantas questoes discursivas? ");
-        m1.qtdDiscursivas=s.nextInt();
-        lixo=s.nextLine();
+        Objetiva obj = new Objetiva();
+        Discursiva dis = new Discursiva();
         
-        m1.questoesDiscursivas = new Discursiva[m1.qtdDiscursivas];
-        if(m1.qtdDiscursivas>0){
-            for(int i=0;i<m1.qtdDiscursivas;i++){
+        while(true){
+            System.out.print("\nDeseja criar uma questao discursiva(d) ou objetiva(o)? ");
+            op=s.nextLine();
+            if(op=="d"){
+             
+               
                 m1.questoesDiscursivas[i]= new Discursiva();
                 System.out.print("\nInforme o enunciado da questao "+(i+1)+": ");
                 m1.questoesDiscursivas[i].setPergunta(s.nextLine());
@@ -40,44 +43,44 @@ public class Principal {
                 System.out.print("\nInforme o peso da questao "+(i+1)+": ");
                 m1.questoesDiscursivas[i].setPeso(s.nextDouble());
                 lixo=s.nextLine();
-            }
-        }
-        
-        System.out.print("\nQuantas questoes objetivas? ");
-        m1.qtdObjetivas=s.nextInt();
-        lixo=s.nextLine();
-        
-        m1.questoesObjetivas = new Objetiva[m1.qtdObjetivas];
-        if(m1.qtdObjetivas>0){
-            char x='a';
-            String c[]=new String[5];
-            for(int i=0;i<m1.qtdObjetivas;i++){
-                m1.questoesObjetivas[i] = new Objetiva();
-                System.out.print("\nInforme o enunciado da questao "+(i+1)+": ");
-                m1.questoesObjetivas[i].setPergunta(s.nextLine());
-                for(int j=0;j<5;j++){
-                    switch(j){
-                        case 0: x='a';
-                            break;
-                        case 1: x='b';
-                            break;
-                        case 2: x='c';
-                            break;
-                        case 3: x='d';
-                            break;
-                        case 4: x='e';
-                            break;
+                
+            }else{
+                char x='a';
+                String c[]=new String[5];
+                for(int i=0;i<m1.qtdObjetivas;i++){
+                    m1.questoesObjetivas[i] = new Objetiva();
+                    System.out.print("\nInforme o enunciado da questao "+(i+1)+": ");
+                    m1.questoesObjetivas[i].setPergunta(s.nextLine());
+                    for(int j=0;j<5;j++){
+                        switch(j){
+                            case 0: x='a';
+                                break;
+                            case 1: x='b';
+                                break;
+                            case 2: x='c';
+                                break;
+                            case 3: x='d';
+                                break;
+                            case 4: x='e';
+                                break;
+                        }
+                        System.out.print("\nInforme a alternativa "+x+": ");
+                        c[j]=s.nextLine();
                     }
-                    System.out.print("\nInforme a alternativa "+x+": ");
-                    c[j]=s.nextLine();
+                    m1.questoesObjetivas[i].setOpcoes(c);
+                    System.out.print("\nInforme a alternativa correta:(entre 1 e 5) ");
+                    m1.questoesObjetivas[i].setResposta(s.nextInt());
+                    lixo=s.nextLine();
+                    System.out.print("\nInforme o peso da questao "+(i+1)+": ");
+                    m1.questoesObjetivas[i].setPeso(s.nextDouble());
+                    lixo=s.nextLine();
                 }
-                m1.questoesObjetivas[i].setOpcoes(c);
-                System.out.print("\nInforme a alternativa correta:(entre 1 e 5) ");
-                m1.questoesObjetivas[i].setResposta(s.nextInt());
-                lixo=s.nextLine();
-                System.out.print("\nInforme o peso da questao "+(i+1)+": ");
-                m1.questoesObjetivas[i].setPeso(s.nextDouble());
-                lixo=s.nextLine();
+            }
+        
+            System.out.print("Deseja criar mais uma questão?(s/n)");
+            op=s.nextLine();
+            if(op == "n"){
+                break;
             }
         }
         
